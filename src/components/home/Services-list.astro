@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets'
+const images = import.meta.glob('../../assets/home/*')
+
+type Props = {
+	title: string
+	imgSrc: string
+	link?: string
+}
+const { title, imgSrc, link = '#' } = Astro.props
+---
+
+<li class="border-b border-neutral-500 py-4">
+	<a
+		href={link}
+		class="flex -translate-x-44 items-center transition-all duration-500 hover:translate-x-0"
+	>
+		<Image src={images[imgSrc]()} alt={title} width="160" class="mr-4 overflow-clip rounded-md" />
+		<h2>
+			{title}
+		</h2>
+	</a>
+</li>

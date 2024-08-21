@@ -5,18 +5,18 @@
 
 // Components
 // - Layout
-import Section from '../../ui/Section.astro'
-import Row from '../../ui/Row.astro'
-import Col from '../../ui/Col.astro'
+import Section from '../../Section.astro'
+import Row from '../../Row.astro'
+import Col from '../../Col.astro'
 // - UI
-import PricingTable from '../../ui/pricing-tables/PricingTable.astro'
-import Toggle from '../../ui/forms/form-elements/Toggle.astro'
+import PricingTable from '../../pricing-tables/PricingTable.astro'
+import Toggle from '../../forms/form-elements/Toggle.astro'
 
 // Content
 import pricingTablesData from '../../../data/json-files/pricingTablesdata.json'
 
 // Script
-import PricingChange from '../../scripts/PricingPlanChange.astro'
+import PricingChange from '../../includes/PricingPlanChange.astro'
 
 // Props
 type PricingTableData = {
@@ -51,9 +51,8 @@ const pricingData: PricingTableData[] = pricingTablesData as PricingTableData[]
 				>Bill monthly</span
 			>
 			<Toggle id="pricingType" label="pricing" showLabel={false} checked={true} />
-			<span
-				class="font-semibold text-neutral-400 text-primary-500 transition-colors"
-				id="annualLabel">Bill annualy</span
+			<span class="font-semibold text-neutral-400 text-primary transition-colors" id="annualLabel"
+				>Bill annualy</span
 			>
 		</Col>
 		{

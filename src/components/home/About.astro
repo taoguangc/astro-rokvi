@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets'
+import AboutImage from '../../assets/home/legacy-image.jpg'
+import About1 from '../../assets/home/legacy-img-01.jpg'
+import About2 from '../../assets/home/legacy-img-02.jpg'
+import About3 from '../../assets/home/legacy-img-03.jpg'
+---
+
+<section class="mx-auto grid max-w-8xl grid-cols-9 gap-y-12 px-5 py-20">
+	<div class="col-span-9">
+		<h4 class="col text-sm">ABOUT US</h4>
+		<h1 class="col text-4xl leading-snug">OUR DESIGN LEGACY</h1>
+	</div>
+	<div class="col-span-9 overflow-clip rounded-md bg-white md:col-span-4">
+		<Image src={AboutImage} format="webp" alt="About Image" class="about" />
+	</div>
+	<div class="col-span-9 ml-16 place-self-center md:col-span-5">
+		<p class="col">
+			What started as a vision to blend cutting-edge technology with compelling design has evolved
+			into a dynamic agency known for its strategic approach & creative flair. Our journey is marked
+			by a commitment to understanding our clients' needs.
+		</p>
+		<div class="flex flex-wrap gap-8 py-8">
+			<div class="col overflow-clip rounded-md">
+				<Image src={About1} format="webp" alt="About 1" class="w-44" />
+			</div>
+			<div class="col overflow-clip rounded-md">
+				<Image src={About2} format="webp" alt="About 2" class="w-44" />
+			</div>
+			<div class="col overflow-clip rounded-md">
+				<Image src={About3} format="webp" alt="About 3" class="w-44" />
+			</div>
+		</div>
+		<div class="col"><a href="#" class="primary-button inline-block">Discover More</a></div>
+	</div>
+</section>
+<script>
+	import { animate, inView } from 'motion'
+	inView('.about', ({ target }) => {
+		animate(
+			target,
+			{ clipPath: ['inset(100% 0 0 0)', 'inset(0)'] },
+			{ delay: 0.3, duration: 0.8, easing: [1, 0, 0.4, 1] }
+		)
+	})
+</script>

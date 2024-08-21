@@ -1,19 +1,14 @@
 ---
 // Imports
 // Components
-import NavigationBar from '../components/ui/NavigationBar.astro'
-import Main from '../components/ui/Main.astro'
-import Footer from '../components/ui/Footer.astro'
-import Modal from '../components/blocks/modal/SignUp.astro'
-import Header from '../components/blocks/head/Header.astro'
-// Scripts
-import Scriprs from '../components/scripts/LocalScripts.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import Head from '../components/Head.astro'
 
-// Styles
-import '../styles/global.css'
+// Styles & Scripts
+import Scriprs from '../components/includes/LocalScripts.astro'
 // Fonts
-import '@fontsource-variable/inter'
-import '@fontsource-variable/outfit'
+import '@fontsource-variable/figtree'
 // Data
 import { configData } from '../config/config'
 
@@ -30,19 +25,18 @@ const { title, description, ogImage, noindex } = Astro.props
 
 <!doctype html>
 <html lang="en" class="scroll-animation mode-auto">
-	<Header title={title} description={description} ogImage={ogImage} noindex={noindex} />
+	<Head title={title} description={description} ogImage={ogImage} noindex={noindex} />
 	<body
 		class:list={[
 			{ ['mode-' + `${configData.mode}`]: configData.mode },
 			{ ['scroll-animation']: configData.scrollAnimations }
 		]}
 	>
-		<NavigationBar />
-		<Main>
+		<Header />
+		<main>
 			<slot />
-		</Main>
+		</main>
 		<Footer />
-		<Modal />
 		<Scriprs />
 	</body>
 </html>

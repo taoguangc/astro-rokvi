@@ -1,0 +1,38 @@
+---
+// Home page Testimonials
+// ------------
+
+import { Image } from 'astro:assets'
+import reviewImage from '../../assets/home/review-background-image.webp'
+import review01 from '../../assets/home/review-01.jpg'
+---
+
+<section class="mx-auto max-w-8xl px-5 py-20">
+	<div class="mb-8">
+		<h4 class="col text-sm uppercase">Testimonials</h4>
+		<h2 class="col text-4xl leading-snug">CLIENTS REVIEW</h2>
+	</div>
+	<div class="relative overflow-clip rounded-md p-12">
+		<div class="max-w-[40rem] rounded-md bg-white p-12">
+			<div>
+				<p class="pb-12 text-3xl">
+					“Their innovative approach and attention to detail transformed our brand’s digital
+					presence, driving significant growth.”
+				</p>
+			</div>
+			<div class="grid grid-flow-col grid-rows-2 place-content-start gap-x-6">
+				<div class="row-span-2">
+					<Image src={review01} alt="Review 01" class="h-12 w-12 rounded-full" />
+				</div>
+				<div class="text-base">Albert Flores</div>
+				<div class="text-xs">CEO of SmithTech Solutions</div>
+			</div>
+		</div>
+		<div class="h-36"></div>
+		<Image
+			src={reviewImage}
+			alt="Clients Review"
+			class="absolute inset-0 -z-10 h-full w-full object-cover"
+		/>
+	</div>
+</section>

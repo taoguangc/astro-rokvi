@@ -1,0 +1,76 @@
+---
+// Footer
+// ------------
+// Description: the website footer is the section of content
+// Reference: https://wind-ui.com/components/footers/
+
+// Components
+// - UI
+import { Icon } from 'astro-icon/components'
+
+// Data
+// import { socialLinks } from '../config/socialLinks'
+import { footerNavigationData } from '../config/footerNav'
+
+const { footerAbout, footerColumns, subFooter } = footerNavigationData
+---
+
+<footer class="w-full bg-neutral-800 pt-16 text-white">
+	<div class="mx-auto grid max-w-8xl grid-cols-12 items-center justify-between gap-y-12 pb-8">
+		<a href="#" class="col-span-3"><img src="/footer-logo.svg" alt="Footer Logo" /></a>
+		<ul class="col-span-6 flex gap-x-8 uppercase">
+			<li><a href="#">Studio</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Pricing</a></li>
+			<li><a href="#">Careers</a></li>
+			<li><a href="#">Blogs</a></li>
+			<li><a href="#">FAQ</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		<div class="col-span-3 flex gap-x-2 justify-self-end">
+			<a href="" class="social-link"><Icon name="ic-twitter" /></a>
+			<a href="" class="social-link"><Icon name="ic-facebook" /></a>
+			<a href="" class="social-link"><Icon name="ic-youtube" /></a>
+			<a href="" class="social-link"><Icon name="ic-insta" /></a>
+		</div>
+		<div class="col-span-3">
+			<h5>California</h5>
+			<p>145-148 Street,3891 Ranchview Dr. Richardson, California, 62639</p>
+			<h5>+(208) 555-0112</h5>
+		</div>
+		<div class="col-span-3 col-start-5">
+			<h5>Kentucky</h5>
+			<p>87-89 Stellen Darwd, 2118 Thornridge Cir. Syracuse, Connecticut, 35624</p>
+			<h5>+(702) 555-0122</h5>
+		</div>
+		<div class="col-span-4 col-start-9 justify-self-end">
+			<h5>SUBSCRIBE NEWSLETTER</h5>
+		</div>
+	</div>
+	<div class="border-t border-white/20">
+		<div class="mx-auto flex max-w-8xl justify-between p-5">
+			<div class="col-span-6"><p>© 2024 Rokvi.</p></div>
+			<div class="col-span-6"><p>Powered by Emptyarea.</p></div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	footer h5 {
+		@apply pb-2 text-lg font-normal text-white;
+	}
+	footer a {
+		@apply text-primary transition-colors duration-300 hover:text-white focus:text-white;
+	}
+
+	footer p {
+		@apply mb-3 text-sm font-light text-neutral-600;
+	}
+
+	footer [data-icon] {
+		@apply text-sm;
+	}
+	a.social-link {
+		@apply flex h-8 w-8 items-center justify-center rounded-full border border-white/10 hover:border-white/20 hover:bg-white/10;
+	}
+</style>

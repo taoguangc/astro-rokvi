@@ -1,0 +1,9 @@
+---
+// Props
+type Props = {
+	name?: string
+}
+const { name = 'luminous' } = Astro.props
+---
+
+<li><img src=`/logos/${name}.svg` alt={name} class="mx-8 grayscale" /></li>

@@ -1,0 +1,107 @@
+---
+// Components
+// - UI
+import { Icon } from 'astro-icon/components'
+
+// Data
+import { navBarData } from '../config/navBar'
+const { logo, navItems, navActions } = navBarData
+
+// Determine current path
+const path = new URL(Astro.request.url).pathname
+function isActivePath(currentPath: string): boolean {
+	return path === currentPath || path === `${currentPath}/`
+}
+
+// Type assertion for navActions to ensure type safety
+const savedNavActions = navActions.map((action) => ({
+	...action,
+	size: action.size as 'base' | 'lg' | 'sm',
+	style: action.style as 'primary' | 'secondary' | 'neutral'
+}))
+---
+
+<header
+	class="w-full animate-fadeInShadowLight border-b border-neutral-500 bg-neutral-300 [animation-range:0%_20rem] [animation-timeline:scroll()] before:absolute after:absolute after:left-0 after:top-full after:block after:h-px after:w-full lg:after:hidden"
+>
+	<div class="lg:max-w-8xl mx-auto max-w-full px-5">
+		<nav
+			aria-label="main navigation"
+			role="navigation"
+			class="flex items-center gap-6 font-medium text-neutral-700 lg:justify-between"
+		>
+			<!-- Logo -->
+			<a href="/">
+				<img src={logo.src} alt={logo.alt} width="96" />
+			</a>
+
+			<!-- Menu toggle -->
+			<button
+				id="header-toggle"
+				class="header__toggle"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<div class="header__toggle-inner">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</div>
+			</button>
+
+			<!-- Navigation links -->
+			<ul
+				role="menubar"
+				aria-label="Select page"
+				class="invisible w-full justify-center overflow-hidden overflow-y-auto overscroll-contain bg-white/90 px-8 text-sm font-medium uppercase opacity-0 transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-2 lg:opacity-100"
+			>
+				{
+					navItems.map((item) => (
+						<li role="none" class="relative flex cursor-pointer flex-col items-stretch lg:flex-row">
+							{!item.submenu ? (
+								<a
+									href={item.link}
+									role="menuitem"
+									class={`relative flex items-center gap-1 py-4 transition-colors duration-300 hover:text-primary focus:text-primary focus:outline-none focus-visible:outline-none lg:px-6 [&.active]:text-primary ${isActivePath(item.link) ? 'active' : ''}`}
+								>
+									{item.name}
+								</a>
+							) : (
+								<span
+									role="menuitem"
+									class={`header__menu-link ${isActivePath(item.link) ? 'active' : ''}`}
+								>
+									{item.name}
+									<Icon name="chevron-down" class="w-4" />
+								</span>
+							)}
+							{item.submenu && (
+								<ul class="visibleleft-0 top-full hidden animate-dropdown rounded bg-neutral-300/10 px-4 lg:absolute lg:min-w-48 lg:rounded-t-none lg:bg-white/90 lg:p-0 lg:shadow-lg">
+									{item.submenu.map((subItem) => (
+										<li role="none" class="hidden">
+											<a
+												href={subItem.link}
+												role="menuitem"
+												class={`header__menu-link ${isActivePath(item.link) ? 'active' : ''}`}
+											>
+												{subItem.name}
+											</a>
+										</li>
+									))}
+								</ul>
+							)}
+						</li>
+					))
+				}
+			</ul>
+
+			<a href="#" class="secondary-button">Get Started</a>
+		</nav>
+	</div>
+</header>
+
+<style>
+	.header__menu-link {
+		@apply relative flex items-center gap-1 py-4 transition-colors duration-300 hover:text-primary focus:text-primary focus:outline-none focus-visible:outline-none lg:px-6 [&.active]:text-primary;
+	}
+</style>

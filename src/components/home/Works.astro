@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets'
+import HeroImage from '../../assets/home/hero-image.jpg'
+import { Icon } from 'astro-icon/components'
+---
+
+<section class="gird-cols-2 mx-auto grid max-w-8xl gap-8 px-5 py-20">
+	<div class="col-span-2">
+		<h4 class="col text-sm">OUR PROJECTS</h4>
+		<h2 class="col text-4xl leading-snug">SELECTED WORKS</h2>
+	</div>
+	<div class="overflow-clip rounded-md">
+		<Image src={HeroImage} format="webp" alt="Hero Image" />
+	</div>
+	<div class="overflow-clip rounded-md">
+		<Image src={HeroImage} format="webp" alt="Hero Image" />
+	</div>
+	<div class="col col-span-2 place-self-end">
+		<a href="#" class="secondary-button flex items-center">
+			View All Projects <Icon name="nav-btn-arrow" size="10" class="ml-3" />
+		</a>
+	</div>
+</section>
+<script>
+	import { animate } from 'motion'
+	animate(
+		'.hero',
+		{ clipPath: ['inset(100% 0 0 0)', 'inset(0)'] },
+		{ delay: 0.3, duration: 0.8, easing: [0, 0, 0.4, 1] }
+	)
+</script>

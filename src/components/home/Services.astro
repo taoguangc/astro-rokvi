@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets'
+import Service from '../../assets/home/service-image.jpg'
+import ServicesList from './Services-list.astro'
+---
+
+<section class="mx-auto grid max-w-8xl grid-cols-7 gap-x-16 gap-y-12 px-5 pb-20 pt-36">
+	<div class="col-span-7 md:col-span-3">
+		<h4 class="col text-sm">WHAT WE DO</h4>
+		<h2 class="col text-4xl leading-snug">OUR SERVICES</h2>
+		<Image src={Service} format="webp" alt="Services Image" class="rounded-md" />
+		<p class="pt-8">
+			In today’s fast-paced digital landscape, having a tailored strategy that aligns with your
+			brand’s identity is crucial. We focus on creating solutions that enhance your online presence.
+		</p>
+		<div class="col"><a href="#" class="primary-button inline-block">View All Services</a></div>
+	</div>
+
+	<div class="col-span-7 ml-16 place-self-center md:col-span-4">
+		<p class="col">
+			We are dedicated to delivering comprehensive solutions designed to propel your brand forward
+			in the digital world. Our approach is rooted in a deep understanding of your unique needs.
+		</p>
+		<ul class="overflow-hidden">
+			<ServicesList title="Brand Identity" imgSrc="../../assets/home/service-main-01.jpg" />
+			<ServicesList title="Graphic Design" imgSrc="../../assets/home/service-main-02.jpg" />
+			<ServicesList title="App Development" imgSrc="../../assets/home/service-main-03.jpg" />
+			<ServicesList title="Digital Marketing" imgSrc="../../assets/home/service-main-04.jpg" />
+			<ServicesList title="UI/UX Design" imgSrc="../../assets/home/service-main-05.jpg" />
+			<ServicesList title="Web Development" imgSrc="../../assets/home/service-main-06.jpg" />
+		</ul>
+	</div>
+</section>

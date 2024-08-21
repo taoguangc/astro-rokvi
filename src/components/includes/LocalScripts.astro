@@ -1,0 +1,15 @@
+---
+const foregroundColor = 'rgb(221 243 228)'
+const backgroundColor = 'rgb(24 121 78)'
+---
+
+<style define:vars={{ foregroundColor, backgroundColor }}>
+	h1 {
+		background-color: var(--backgroundColor);
+		color: var(--foregroundColor);
+	}
+</style>
+<script>
+	import '@/styles/global.css'
+	import '@/scripts/main.js'
+</script>
