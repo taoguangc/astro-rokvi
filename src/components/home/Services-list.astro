@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-const images = import.meta.glob('../../assets/home/*')
+const images = await import.meta.glob('../../assets/home/*')
 
 type Props = {
 	title: string
