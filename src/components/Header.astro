@@ -5,7 +5,7 @@ import { Icon } from 'astro-icon/components'
 
 // Data
 import { navBarData } from '../config/navBar'
-const { logo, navItems, navActions } = navBarData
+const { logo, navItems } = navBarData
 
 // Determine current path
 const path = new URL(Astro.request.url).pathname
@@ -14,17 +14,17 @@ function isActivePath(currentPath: string): boolean {
 }
 
 // Type assertion for navActions to ensure type safety
-const savedNavActions = navActions.map((action) => ({
-	...action,
-	size: action.size as 'base' | 'lg' | 'sm',
-	style: action.style as 'primary' | 'secondary' | 'neutral'
-}))
+// const savedNavActions = navActions.map((action) => ({
+// 	...action,
+// 	size: action.size as 'base' | 'lg' | 'sm',
+// 	style: action.style as 'primary' | 'secondary' | 'neutral'
+// }))
 ---
 
 <header
 	class="w-full animate-fadeInShadowLight border-b border-neutral-500 bg-neutral-300 [animation-range:0%_20rem] [animation-timeline:scroll()] before:absolute after:absolute after:left-0 after:top-full after:block after:h-px after:w-full lg:after:hidden"
 >
-	<div class="lg:max-w-8xl mx-auto max-w-full px-5">
+	<div class="mx-auto max-w-full px-5 lg:max-w-8xl">
 		<nav
 			aria-label="main navigation"
 			role="navigation"

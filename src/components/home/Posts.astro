@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets'
-import AboutImage from '../../assets/home/legacy-image.jpg'
+// import { Image } from 'astro:assets'
+// import AboutImage from '../../assets/home/legacy-image.jpg'
 import { getCollection } from 'astro:content'
 const posts = await getCollection('posts')
 posts.sort((a, b) => b.data.pubDate - a.data.pubDate)
