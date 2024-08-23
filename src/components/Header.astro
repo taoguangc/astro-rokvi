@@ -101,7 +101,7 @@ function isActivePath(currentPath: string): boolean {
 		@apply absolute left-0 top-20 mx-auto h-auto w-full justify-center overflow-hidden overscroll-contain border-b border-black/20 bg-white/90 p-8 font-medium opacity-0 transition-all duration-500 [clip-path:inset(0_0_100%_0)] md:ml-auto lg:visible lg:relative lg:flex lg:w-auto lg:-translate-y-20 lg:items-stretch lg:overflow-visible lg:border-0 lg:bg-white/0 lg:px-0 lg:py-0 lg:pt-0 lg:opacity-100 lg:[clip-path:inset(0)];
 	}
 	.header__menu--open {
-		@apply visible top-20 opacity-100 backdrop-blur-sm [clip-path:inset(0)];
+		@apply visible top-20 z-10 opacity-100 backdrop-blur-sm [clip-path:inset(0)];
 	}
 	.header__menu-item {
 		@apply relative flex cursor-pointer flex-col items-stretch lg:flex-row;
