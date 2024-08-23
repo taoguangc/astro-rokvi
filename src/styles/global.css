@@ -94,7 +94,7 @@ h6 {
 }
 
 a.primary-button {
-	@apply rounded-full border border-transparent bg-primary px-6 py-3 text-sm text-black duration-500 ease-[cubic-bezier(0,1,1,1)] hover:border-black hover:bg-white;
+	@apply mt-4 rounded-full border border-transparent bg-primary px-6 py-3 text-sm text-black duration-500 ease-[cubic-bezier(0,1,1,1)] hover:border-black hover:bg-white;
 }
 
 a.secondary-button {
