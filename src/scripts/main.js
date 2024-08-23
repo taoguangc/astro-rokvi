@@ -101,9 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	initializeObserver()
 })
 
-document.addEventListener('astro:page-loaded', () => {
-	initializeObserver()
-})
+// document.addEventListener('astro:page-loaded', () => {
+// 	initializeObserver()
+// })
 
 document.addEventListener('astro:after-swap', () => {
 	initializeObserver()
@@ -163,3 +163,32 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf)
+
+// Motion One
+import { animate, inView } from 'motion'
+
+const clipUp = () => {
+	inView('[data-clipUp]', ({ target }) => {
+		animate(
+			target,
+			{ clipPath: ['inset(100% 0 0 0)', 'inset(0)'] },
+			{ delay: 0.3, duration: 0.8, easing: [1, 0, 0.4, 1] }
+		)
+	})
+}
+
+// document.addEventListener('DOMContentLoaded', () => {
+// 	clipUp()
+// 	alert('DOMContentLoaded')
+// })
+// document.addEventListener('astro:before-swap', () => {
+// 	document.removeEventListener()
+// })
+document.addEventListener('astro:after-swap', () => {
+	document.removeEventListener('astro:page-load', () => {
+		clipUp()
+	})
+})
+document.addEventListener('astro:page-load', () => {
+	clipUp()
+})

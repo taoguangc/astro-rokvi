@@ -12,7 +12,7 @@ import About3 from '../../assets/home/legacy-img-03.jpg'
 		<h1 class="col text-4xl leading-snug">OUR DESIGN LEGACY</h1>
 	</div>
 	<div class="col-span-9 overflow-clip rounded-md bg-white md:col-span-4">
-		<Image src={AboutImage} format="webp" alt="About Image" class="about" />
+		<Image src={AboutImage} format="webp" alt="About Image" data-clipUp />
 	</div>
 	<div class="col-span-9 ml-16 place-self-center md:col-span-5">
 		<p class="col">
@@ -34,13 +34,3 @@ import About3 from '../../assets/home/legacy-img-03.jpg'
 		<div class="col"><a href="#" class="primary-button inline-block">Discover More</a></div>
 	</div>
 </section>
-<script is:inline>
-	import { animate, inView } from 'motion'
-	inView('.about', ({ target }) => {
-		animate(
-			target,
-			{ clipPath: ['inset(100% 0 0 0)', 'inset(0)'] },
-			{ delay: 0.3, duration: 0.8, easing: [1, 0, 0.4, 1] }
-		)
-	})
-</script>

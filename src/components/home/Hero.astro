@@ -39,26 +39,13 @@ import HeroImage from '../../assets/home/hero-image.jpg'
 	</div>
 	<div class="w-full md:w-1/2 lg:w-2/5">
 		<div class="overflow-clip rounded-md bg-white">
-			<Image src={HeroImage} format="webp" alt="Hero Image" class="hero" />
+			<Image
+				src={HeroImage}
+				format="webp"
+				alt="Hero Image"
+				data-clipUp
+				class="[clip-path:inset(100%_0_0_0)]"
+			/>
 		</div>
 	</div>
 </section>
-<script is:inline>
-	import { animate } from 'motion'
-	const scrollUp = () => {
-		animate(
-			'.hero',
-			{ clipPath: ['inset(100% 0 0 0)', 'inset(0)'] },
-			{ delay: 0.3, duration: 0.8, easing: [0, 0, 0.4, 1] }
-		)
-	}
-	document.addEventListener('astro:page-load', () => {
-		scrollUp()
-	})
-	document.addEventListener('astro:page-loaded', () => {
-		scrollUp()
-	})
-	document.addEventListener('astro:after-swap', () => {
-		scrollUp()
-	})
-</script>
