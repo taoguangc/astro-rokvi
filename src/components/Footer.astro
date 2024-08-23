@@ -16,9 +16,13 @@ import { Icon } from 'astro-icon/components'
 ---
 
 <footer class="w-full bg-neutral-800 pt-16 text-white">
-	<div class="mx-auto grid max-w-8xl grid-cols-12 items-center justify-between gap-y-12 pb-8">
-		<a href="#" class="col-span-3"><img src="/footer-logo.svg" alt="Footer Logo" /></a>
-		<ul class="col-span-6 flex gap-x-8 uppercase">
+	<div
+		class="mx-auto flex max-w-8xl flex-col items-center justify-between gap-y-6 px-12 pb-8 md:flex-row md:gap-y-12 md:px-6"
+	>
+		<a href="#" class="inline-block flex-1"><img src="/footer-logo.svg" alt="Footer Logo" /></a>
+		<ul
+			class="flex flex-1 flex-wrap gap-x-4 text-sm uppercase leading-loose md:text-base lg:flex-nowrap lg:gap-x-8"
+		>
 			<li><a href="#">Studio</a></li>
 			<li><a href="#">Services</a></li>
 			<li><a href="#">Pricing</a></li>
@@ -27,30 +31,34 @@ import { Icon } from 'astro-icon/components'
 			<li><a href="#">FAQ</a></li>
 			<li><a href="#">Contact</a></li>
 		</ul>
-		<div class="col-span-3 flex gap-x-2 justify-self-end">
+		<div class="flex flex-1 justify-end gap-x-2">
 			<a href="" class="social-link"><Icon name="ic-twitter" /></a>
 			<a href="" class="social-link"><Icon name="ic-facebook" /></a>
 			<a href="" class="social-link"><Icon name="ic-youtube" /></a>
 			<a href="" class="social-link"><Icon name="ic-insta" /></a>
 		</div>
-		<div class="col-span-3">
+	</div>
+	<div
+		class="mx-auto flex max-w-8xl flex-col items-center justify-between justify-items-center gap-8 px-12 pb-12 md:flex-row md:gap-16 md:px-6 md:pb-16"
+	>
+		<div class="flex-1 text-center">
 			<h5>California</h5>
 			<p>145-148 Street,3891 Ranchview Dr. Richardson, California, 62639</p>
 			<h5>+(208) 555-0112</h5>
 		</div>
-		<div class="col-span-3 col-start-5">
+		<div class="flex-1 text-center">
 			<h5>Kentucky</h5>
 			<p>87-89 Stellen Darwd, 2118 Thornridge Cir. Syracuse, Connecticut, 35624</p>
 			<h5>+(702) 555-0122</h5>
 		</div>
-		<div class="col-span-4 col-start-9 justify-self-end">
+		<div class="flex flex-1 md:justify-end">
 			<h5>SUBSCRIBE NEWSLETTER</h5>
 		</div>
 	</div>
 	<div class="border-t border-white/20">
-		<div class="mx-auto flex max-w-8xl justify-between p-5">
-			<div class="col-span-6"><p>© 2024 Rokvi.</p></div>
-			<div class="col-span-6"><p>Powered by Emptyarea.</p></div>
+		<div class="mx-auto flex max-w-8xl flex-col items-center p-5 md:flex-row md:justify-between">
+			<div class="flex-1"><p>© 2024 Rokvi.</p></div>
+			<div class="flex-1"><p>Powered by Emptyarea.</p></div>
 		</div>
 	</div>
 </footer>

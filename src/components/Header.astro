@@ -4,7 +4,7 @@
 import { Icon } from 'astro-icon/components'
 
 // Data
-import { navBarData } from '../config/navBar'
+import { navBarData } from '../data/navBar'
 const { logo, navItems } = navBarData
 
 // Determine current path
@@ -22,16 +22,16 @@ function isActivePath(currentPath: string): boolean {
 ---
 
 <header
-	class="w-full animate-fadeInShadowLight border-b border-neutral-500 bg-neutral-300 [animation-range:0%_20rem] [animation-timeline:scroll()] before:absolute after:absolute after:left-0 after:top-full after:block after:h-px after:w-full lg:after:hidden"
+	class="w-full animate-fadeInShadowLight border-b border-neutral-500 [animation-range:0%_20rem] [animation-timeline:scroll()] before:absolute after:absolute after:left-0 after:top-full after:block after:h-px after:w-full lg:after:hidden"
 >
 	<div class="mx-auto max-w-full px-5 lg:max-w-8xl">
 		<nav
 			aria-label="main navigation"
 			role="navigation"
-			class="flex items-center gap-6 font-medium text-neutral-700 lg:justify-between"
+			class="flex h-20 items-center gap-6 font-medium text-neutral-700 lg:justify-between"
 		>
 			<!-- Logo -->
-			<a href="/">
+			<a href="/" class="w-36">
 				<img src={logo.src} alt={logo.alt} width="96" />
 			</a>
 
@@ -49,20 +49,16 @@ function isActivePath(currentPath: string): boolean {
 				</div>
 			</button>
 
-			<!-- Navigation links -->
-			<ul
-				role="menubar"
-				aria-label="Select page"
-				class="invisible w-full justify-center overflow-hidden overflow-y-auto overscroll-contain bg-white/90 px-8 text-sm font-medium uppercase opacity-0 transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-2 lg:opacity-100"
-			>
+			<!-- Menu -->
+			<ul role="menubar" aria-label="Select page" class="header__menu">
 				{
 					navItems.map((item) => (
-						<li role="none" class="relative flex cursor-pointer flex-col items-stretch lg:flex-row">
+						<li role="none" class="header__menu-item">
 							{!item.submenu ? (
 								<a
 									href={item.link}
 									role="menuitem"
-									class={`relative flex items-center gap-1 py-4 transition-colors duration-300 hover:text-primary focus:text-primary focus:outline-none focus-visible:outline-none lg:px-6 [&.active]:text-primary ${isActivePath(item.link) ? 'active' : ''}`}
+									class={`header__menu-link ${isActivePath(item.link) ? 'active' : ''}`}
 								>
 									{item.name}
 								</a>
@@ -72,13 +68,13 @@ function isActivePath(currentPath: string): boolean {
 									class={`header__menu-link ${isActivePath(item.link) ? 'active' : ''}`}
 								>
 									{item.name}
-									<Icon name="chevron-down" class="w-4" />
+									<Icon name="chevron-down" class="header__menu-chevron" />
 								</span>
 							)}
 							{item.submenu && (
-								<ul class="visibleleft-0 top-full hidden animate-dropdown rounded bg-neutral-300/10 px-4 lg:absolute lg:min-w-48 lg:rounded-t-none lg:bg-white/90 lg:p-0 lg:shadow-lg">
+								<ul class="header__submenu">
 									{item.submenu.map((subItem) => (
-										<li role="none" class="hidden">
+										<li role="none" class="header__submenu-item">
 											<a
 												href={subItem.link}
 												role="menuitem"
@@ -95,13 +91,56 @@ function isActivePath(currentPath: string): boolean {
 				}
 			</ul>
 
-			<a href="#" class="secondary-button">Get Started</a>
+			<a href="#" class="secondary-button hidden md:block">Get Started</a>
 		</nav>
 	</div>
 </header>
 
 <style>
+	.header__menu {
+		@apply absolute left-0 top-20 mx-auto h-auto w-full justify-center overflow-hidden overscroll-contain border-b border-black/20 bg-white/90 p-8 font-medium opacity-0 transition-all duration-500 [clip-path:inset(0_0_100%_0)] md:ml-auto lg:visible lg:relative lg:flex lg:w-auto lg:-translate-y-20 lg:items-stretch lg:overflow-visible lg:border-0 lg:bg-white/0 lg:px-0 lg:py-0 lg:pt-0 lg:opacity-100 lg:[clip-path:inset(0)];
+	}
+	.header__menu--open {
+		@apply visible top-20 opacity-100 backdrop-blur-sm [clip-path:inset(0)];
+	}
+	.header__menu-item {
+		@apply relative flex cursor-pointer flex-col items-stretch lg:flex-row;
+	}
 	.header__menu-link {
 		@apply relative flex items-center gap-1 py-4 transition-colors duration-300 hover:text-primary focus:text-primary focus:outline-none focus-visible:outline-none lg:px-6 [&.active]:text-primary;
+	}
+	.header__menu-chevron {
+		@apply h-4 w-4 transition-transform [.header\_\_menu-item.open_&]:rotate-180;
+	}
+	.header__submenu {
+		@apply left-0 top-full hidden animate-dropdown rounded bg-neutral-300/10 px-4 lg:absolute lg:min-w-48 lg:rounded-t-none lg:bg-white/90 lg:p-0 lg:shadow-lg lg:shadow-neutral-700/5 lg:backdrop-blur-sm [.header\_\_menu-item.open_&]:block;
+	}
+	.header__submenu-item {
+		@apply hidden [.header\_\_menu-item.open_&]:block;
+	}
+	.header__submenu-link {
+		@apply px-8 py-4 hover:text-primary [.header\_\_menu-item.open_&]:flex;
+	}
+
+	.header__toggle {
+		@apply relative order-10 ml-auto block h-10 w-10 self-center lg:hidden [&--open]:visible [&--open]:opacity-100;
+	}
+	.header__toggle-inner {
+		@apply absolute left-1/2 top-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform;
+	}
+	.header__toggle-inner span {
+		@apply absolute block h-0.5 transform rounded-full bg-neutral-900 transition-all duration-300 dark:bg-white;
+	}
+	.header__toggle-inner span:nth-child(1) {
+		@apply w-9/12 -translate-y-2 [.header\_\_toggle--open_&]:w-6 [.header\_\_toggle--open_&]:translate-y-0 [.header\_\_toggle--open_&]:rotate-45;
+	}
+	.header__toggle-inner span:nth-child(2) {
+		@apply w-6 [.header\_\_toggle--open_&]:-rotate-45;
+	}
+	.header__toggle-inner span:nth-child(3) {
+		@apply w-1/2 origin-top-left translate-y-2 [.header\_\_toggle--open_&]:w-0;
+	}
+	.header__actions {
+		@apply fixed bottom-0 left-0 hidden w-full items-center justify-between gap-4 border-t border-neutral-100 bg-white px-6 py-4 lg:relative lg:ml-auto lg:flex lg:w-auto lg:border-none lg:bg-transparent lg:px-0 lg:py-0 [.header\_\_menu--open~&]:flex;
 	}
 </style>
