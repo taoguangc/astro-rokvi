@@ -33,7 +33,7 @@ h3,
 h4,
 h5,
 h6 {
-	@apply font-medium text-black last:mb-0;
+	@apply font-medium text-black;
 }
 h1 strong,
 h2 strong,
