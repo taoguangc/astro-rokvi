@@ -10,14 +10,14 @@ const posts = (await getCollection('posts'))
 	.slice(0, 3)
 ---
 
-<section class="mx-auto grid max-w-8xl grid-cols-3 gap-x-6 gap-y-12 px-5 py-20">
+<section class="mx-auto grid max-w-8xl grid-cols-3 gap-x-6 gap-y-2 px-5 py-20 md:gap-y-12">
 	<div class="col-span-3">
-		<h3 class="col text-base uppercase">Blogs</h3>
+		<h3 class="col md:md-3 mb-0 text-base uppercase">Blogs</h3>
 		<h2 class="col text-2xl leading-snug md:text-4xl">LATEST ARTICLES</h2>
 	</div>
 	{
 		posts.map((post) => (
-			<div class="col-span-1">
+			<div class="col-span-3 md:col-span-1">
 				<a href={`/posts/${post.slug}`}>
 					<div
 						data-date={`${new Date(post.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`}
