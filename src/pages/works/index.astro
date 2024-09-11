@@ -1,0 +1,51 @@
+---
+// Works Index Page
+// ------------
+// Description: The works index page.
+
+// Components
+// - Layout
+import Layout from '../../layouts/Layout.astro'
+import type { CollectionEntry } from 'astro:content'
+type work = CollectionEntry<'works'>
+
+// Content
+// - SEO
+const SEO = {
+	title: 'Rokvi | Latest Rokvi Works',
+	description:
+		"Explore Rokvi's latest news designed to enhance productivity, ensure top-notch security, and integrate seamlessly with your favorite tools. Join thousands of satisfied users and transform your workflow with Foxi today!"
+}
+
+// const allPosts = await getCollection('works')
+import { getCollection } from 'astro:content'
+const works = (await getCollection('works'))
+	.sort(
+		(a: work, b: work) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+	)
+	.slice(0, 4)
+
+// Function to sort posts by date
+// const sortedPosts = works.sort((a: any, b: any) => {
+// 	return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+// })
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+	<article>
+		{
+			works.map((work) => (
+				<div class="">
+					link={`/blog/${work.slug}`}
+					title={work.data.title}
+					subtitle=
+					{`By ${work.data.author} on ${new Date(work.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`}
+					image={work.data.image}
+					tags={work.data.tags}
+					{work.data.description}
+				</div>
+			))
+		}
+		<div></div>
+	</article>
+</Layout>

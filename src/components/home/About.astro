@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import AboutImage from '../../assets/home/legacy-image.jpg'
 import About1 from '../../assets/home/legacy-img-01.jpg'
@@ -31,6 +32,6 @@ import About3 from '../../assets/home/legacy-img-03.jpg'
 				<Image src={About3} format="webp" alt="About 3" class="md:w-44" />
 			</div>
 		</div>
-		<div class="col"><a href="#" class="primary-button inline-block">Discover More</a></div>
+		<div class="col"><a href="#" class="primary-button inline-flex items-center">Discover More <Icon name="nav-btn-arrow" size="10" class="ml-3" /></a></div>
 	</div>
 </section>

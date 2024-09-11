@@ -1,37 +1,4 @@
 document.addEventListener('astro:page-load', () => {
-	// Menu Dropdown
-	// const menuItems = document.querySelectorAll('.header__menu-item')
-	// menuItems.forEach((menuItem) => {
-	// 	const submenu = menuItem.querySelector('.header__submenu')
-	// 	const link = menuItem.querySelector('.header__menu-link')
-
-	// 	if (submenu && link) {
-	// 		link.addEventListener('mouseover', function () {
-	// 			// event.preventDefault()
-	// 			menuItem.classList.add('open')
-	// 		})
-	// 	}
-	// })
-	// document.addEventListener('mouseout', function (event) {
-	// 	const target = event.target
-
-	// 	menuItems.forEach((menuItem) => {
-	// 		const submenu = menuItem.querySelector('.header__submenu')
-	// 		if (submenu && !menuItem.contains(target)) {
-	// 			menuItem.classList.remove('open')
-	// 		}
-	// 	})
-	// })
-	// document.addEventListener('click', function (event) {
-	// 	const target = event.target
-
-	// 	menuItems.forEach((menuItem) => {
-	// 		const submenu = menuItem.querySelector('.header__submenu')
-	// 		if (submenu && !menuItem.contains(target)) {
-	// 			menuItem.classList.remove('open')
-	// 		}
-	// 	})
-	// })
 
 	// Menu toggle
 	const headerToggle = document.querySelector('.header__toggle')
@@ -108,50 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('astro:after-swap', () => {
 	initializeObserver()
 })
-
-// dark/light mode
-// if (document.documentElement.classList.contains('mode-auto')) {
-// 	const applyTheme = () => {
-// 		if (
-// 			localStorage.theme === 'dark' ||
-// 			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-// 		) {
-// 			document.documentElement.classList.add('dark')
-// 		} else {
-// 			document.documentElement.classList.remove('dark')
-// 		}
-// 	}
-// 	const setupThemeSwitcher = () => {
-// 		const themeSwitcher = document.getElementById('theme-selector')
-// 		if (themeSwitcher) {
-// 			themeSwitcher.addEventListener('click', () => {
-// 				if (localStorage.theme === 'dark') {
-// 					localStorage.theme = 'light'
-// 					document.documentElement.classList.remove('dark')
-// 				} else {
-// 					localStorage.theme = 'dark'
-// 					document.documentElement.classList.add('dark')
-// 				}
-// 			})
-// 		}
-// 	}
-// 	document.addEventListener('DOMContentLoaded', () => {
-// 		applyTheme()
-// 		setupThemeSwitcher()
-// 	})
-// 	document.addEventListener('astro:page-loaded', () => {
-// 		applyTheme()
-// 		setupThemeSwitcher()
-// 	})
-// 	document.addEventListener('astro:after-swap', () => {
-// 		applyTheme()
-// 		setupThemeSwitcher()
-// 	})
-// } else if (document.documentElement.classList.contains('mode-dark')) {
-// 	document.documentElement.classList.add('dark')
-// } else if (document.documentElement.classList.contains('mode-light')) {
-// 	document.documentElement.classList.remove('dark')
-// }
 
 // Lenis
 import Lenis from 'lenis'

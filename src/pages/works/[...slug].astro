@@ -1,0 +1,25 @@
+---
+// Blog Post Page
+// ------------
+// Description: The blog post page.
+
+// Components
+// - Layout
+import Layout from '../../layouts/PostLayout.astro'
+
+// Data
+import { getCollection } from 'astro:content'
+export async function getStaticPaths() {
+	const works = await getCollection('works')
+	return works.map((work) => ({
+		params: { slug: work.slug },
+		props: { work }
+	}))
+}
+const { work } = Astro.props
+const { Content } = await work.render()
+---
+
+<Layout frontmatter={work.data}>
+	<Content />
+</Layout>

@@ -1,7 +1,13 @@
 ---
 import { Image } from 'astro:assets'
-import HeroImage from '../../assets/home/hero-image.jpg'
 import { Icon } from 'astro-icon/components'
+import type { CollectionEntry } from 'astro:content'
+type work = CollectionEntry<'works'>
+
+import { getCollection } from 'astro:content'
+const works = (await getCollection('works'))
+	.sort((a: work, b: work) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 4)
 ---
 
 <section class="gird-cols-2 mx-auto grid max-w-8xl gap-8 px-5 py-20">
@@ -9,14 +15,28 @@ import { Icon } from 'astro-icon/components'
 		<h4 class="col text-sm">OUR PROJECTS</h4>
 		<h2 class="col text-2xl leading-snug md:text-4xl">SELECTED WORKS</h2>
 	</div>
-	<div class="overflow-clip rounded-md">
-		<Image src={HeroImage} format="webp" alt="Hero Image" />
-	</div>
-	<div class="overflow-clip rounded-md">
-		<Image src={HeroImage} format="webp" alt="Hero Image" />
-	</div>
+	{
+		works.map((work: work) => (
+			<a href={`/works/${work.slug}`}>
+				<div class="col group relative overflow-hidden rounded-md">
+					<Image
+						src={work.data.image}
+						alt={work.data.title}
+						width="960"
+						format="avif"
+						class="h-96 object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+					/>
+					<div class="absolute bottom-8 right-8 z-20 rounded-full bg-primary p-3 opacity-0 transition duration-300 ease-in group-hover:opacity-100">
+						<Icon name="arrow-right" size="24" />
+					</div>
+				</div>
+				<h4 class="pt-4 text-lg font-medium">{work.data.title}</h4>
+			</a>
+		))
+	}
+
 	<div class="col col-span-2 place-self-end">
-		<a href="#" class="secondary-button flex items-center">
+		<a href="/works" class="secondary-button flex items-center">
 			View All Projects <Icon name="nav-btn-arrow" size="10" class="ml-3" />
 		</a>
 	</div>

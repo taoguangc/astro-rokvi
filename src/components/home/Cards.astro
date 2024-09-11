@@ -1,8 +1,5 @@
 ---
-// Home page Cards Section
-// ------------
-// Description: A centered call to action section that contains: a title, text, a user review snippet, a button and a image.
-
+import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import office1 from '../../assets/home/office-image-01.jpg'
 import office2 from '../../assets/home/office-image-02.jpg'
@@ -21,7 +18,7 @@ import office3 from '../../assets/home/office-image-03.jpg'
 			that drive results.
 		</p>
 		<div class="mt-24 place-self-end">
-			<a href="#" class="primary-button inline-block">View All Projects</a>
+			<a href="#" class="primary-button inline-flex items-center">View All Projects<Icon name="nav-btn-arrow" size="10" class="ml-3" /></a>
 		</div>
 	</div>
 	<div

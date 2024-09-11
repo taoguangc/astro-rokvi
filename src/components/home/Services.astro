@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
 import Service from '../../assets/home/service-image.jpg'
 import ServicesList from './Services-list.astro'
 ---
@@ -15,7 +16,7 @@ import ServicesList from './Services-list.astro'
 			In today’s fast-paced digital landscape, having a tailored strategy that aligns with your
 			brand’s identity is crucial. We focus on creating solutions that enhance your online presence.
 		</p>
-		<div class="col"><a href="#" class="primary-button inline-block">View All Services</a></div>
+		<div class="col"><a href="#" class="primary-button inline-flex items-center">View All Services <Icon name="nav-btn-arrow" size="10" class="ml-3" /></a></div>
 	</div>
 
 	<div class="col-span-7 place-self-center md:col-span-4 md:pl-16">
