@@ -39,9 +39,8 @@ const works = (await getCollection('works'))
 					link={`/blog/${work.slug}`}
 					title={work.data.title}
 					subtitle=
-					{`By ${work.data.author} on ${new Date(work.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`}
+					{`${new Date(work.data.pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`}
 					image={work.data.image}
-					tags={work.data.tags}
 					{work.data.description}
 				</div>
 			))
